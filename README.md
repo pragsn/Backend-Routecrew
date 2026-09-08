@@ -13,3 +13,9 @@ python3 -m http.server 5174 --directory dist
 Open `http://localhost:5174`.
 
 This frontend is intentionally separated from the driver application. The production connection will use authenticated backend APIs, PostgreSQL/PostGIS records, private S3-compatible document storage and short-lived signed document URLs.
+
+## Driver onboarding schema compatibility
+
+The verification dashboard is aligned with the current Route-Crew driver onboarding model. It can review driving licence number/document, home address plus geolocation coordinates/source, vehicle ownership and company/vendor assignment, independent pickup/drop windows, multiple external engagements, referral code, verification/location/declaration consent, RC and insurance details.
+
+Registration (`5173`) and verification (`5174`) are different browser origins, so browser localStorage/IndexedDB is only a prototype store and is **not** the production integration path. The production driver app and admin dashboard should exchange application records through authenticated backend APIs backed by PostgreSQL/PostGIS, with documents in private object storage.
